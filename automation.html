@@ -22,53 +22,56 @@
 			</div>
 			<p>
 				Here's The code for the robot:
-				<code>
+				<code class="code">
 						addon ui version 4.101.0.0
+						<br>
 						addon core version 4.101.0.0
+						<br>
 						addon language version 4.103.0.0
+						<br>
 
-						♥savedirectory= ‴E:\GeneralDev\DST\Data\Cropped\‴
-						♥filename=game0000
-						♥iteration = ⟦integer⟧0
+						♥savedirectory= ‴E:\GeneralDev\DST\Data\Cropped\‴<br>
+						♥filename=game0000<br>
+						♥iteration = ⟦integer⟧0<br>
 
-						call StartGimp
-						while ⊂♥iteration < 8162⊃
-						    ♥iteration = ♥iteration + 1
-						    call OpenAndCropImages fileno ♥iteration
-						end
+						call StartGimp<br>
+						while ⊂♥iteration < 8162⊃<br>
+						    ♥iteration = ♥iteration + 1<br>
+						    call OpenAndCropImages fileno ♥iteration<br>
+						end<br>
 
-						procedure StartGimp
-						keyboard ⋘WIN⋙gimp⋘ENTER⋙
-						waitfor.ui ‴/ui[@name='GNU Image Manipulation Program']/descendant::ui[@id='MenuBar']/ui[@name='System']‴
-						end
+						procedure StartGimp<br>
+						keyboard ⋘WIN⋙gimp⋘ENTER⋙<br>
+						waitfor.ui ‴/ui[@name='GNU Image Manipulation Program']/descendant::ui[@id='MenuBar']/ui[@name='System']‴<br>
+						end<br>
 
-						procedure OpenAndCropImages fileno
-						    ♥clipboard = ‴E:\GeneralDev\DST\Data\♥filename♥fileno.png‴
-						    keyboard ⋘ALT+F⋙
-						    keyboard ⋘DOWN 4⋙
-						    keyboard ⋘ENTER⋙
-						    delay 1
-						    keyboard ⋘CTRL+V⋙
-						    delay 1
-						    keyboard ⋘ENTER⋙
-						    delay 1
-						    keyboard ⋘ALT+S⋙
-						    keyboard ⋘ENTER⋙
-						    keyboard ⋘ALT+D⋙
-						    keyboard ⋘ENTER⋙
-						    delay 3
-						    keyboard ⋘ALT+BS⋙
-						    keyboard ⋘SHIFT+CTRL+E⋙
-						    delay 10
-						    keyboard ♥savedirectory+♥filename+♥fileno
-						    keyboard ⋘ENTER⋙
-						    delay 5
-						    keyboard ⋘ENTER⋙
-						    delay 2
-						    keyboard ⋘CTRL+W⋙
-						    keyboard ⋘LEFT⋙
-						    keyboard ⋘ENTER⋙
-						end
+						procedure OpenAndCropImages fileno<br>
+						    ♥clipboard = ‴E:\GeneralDev\DST\Data\♥filename♥fileno.png‴<br>
+						    keyboard ⋘ALT+F⋙<br>
+						    keyboard ⋘DOWN 4⋙<br>
+						    keyboard ⋘ENTER⋙<br>
+						    delay 1<br>
+						    keyboard ⋘CTRL+V⋙<br>
+						    delay 1<br>
+						    keyboard ⋘ENTER⋙<br>
+						    delay 1<br>
+						    keyboard ⋘ALT+S⋙<br>
+						    keyboard ⋘ENTER⋙<br>
+						    keyboard ⋘ALT+D⋙<br>
+						    keyboard ⋘ENTER⋙<br>
+						    delay 3<br>
+						    keyboard ⋘ALT+BS⋙<br>
+						    keyboard ⋘SHIFT+CTRL+E⋙<br>
+						    delay 10<br>
+						    keyboard ♥savedirectory+♥filename+♥fileno<br>
+						    keyboard ⋘ENTER⋙<br>
+						    delay 5<br>
+						    keyboard ⋘ENTER⋙<br>
+						    delay 2<br>
+						    keyboard ⋘CTRL+W⋙<br>
+						    keyboard ⋘LEFT⋙<br>
+						    keyboard ⋘ENTER⋙<br>
+						end<br>
 				</code>
 			</p>
 		</div>
