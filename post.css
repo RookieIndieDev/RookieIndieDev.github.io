@@ -25,7 +25,7 @@ body
 p
 {
 	position: relative;
-  text-align: left;
+  	text-align: left;
 	top: 2%;
 	right: -10px;
 	font-size:25x;
@@ -42,11 +42,20 @@ p
 	right: -25%;
 }
 
-.class
+.code
 {
 	width: 200px; 
 	height: 100px;
 	background-color: #898989;
+}
+
+.lines
+{
+	width: 200px; 
+	height: 100px;
+	background-color: #898989;
+}
+
 }
 
 
