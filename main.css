@@ -2,9 +2,18 @@ h1
 {
 	text-align: center;
 	position: absolute;
-	top: 100px;
-	text-shadow: 3px 2px 5px black; 	
+	top: 2%;
+	right:38%;
+	text-shadow: 3px 2px 5px black;
+	font-size: 50px;
 }
+
+h1:hover
+{
+	color: white;
+	opacity: 0.5;
+}
+
 
 body
 {
@@ -14,8 +23,28 @@ body
 
 .main
 {
-	width: 1280;
-	height: 720;
-	box-shadow: 10px 10px 5px black;
+	width: 1080;
+	height: 480;
+	box-shadow: 10px 10px 85px black;
 	background-color: #dfdfdf;
+	position: absolute;
+	top: 15%;
+	right:20%
+}
+
+a
+{
+	position: relative;
+  text-align: center;
+	top: 30%;
+	right: 5px;
+	font-size: 50px;
+	text-shadow: 5px 5px 10px black;
+	color: black;
+}
+
+a:hover
+{
+	color: grey;  
+	opacity: 0.5;
 }
