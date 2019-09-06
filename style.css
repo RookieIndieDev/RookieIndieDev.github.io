@@ -3,7 +3,7 @@ body
   background-image: url("Background.png");
 }
 
-h1
+h3
 {
 	color: #8c9aff;
 	text-align: center;
@@ -12,9 +12,9 @@ h1
 	position: 
 }
 
-h1:hover
+h3:hover
 {
-	color: #424242;
+	color: #4251c0;
 }
 
 .main
