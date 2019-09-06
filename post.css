@@ -9,8 +9,8 @@ h1
 
 .main
 {
-	width: 1080;
-	height: 2500;
+	width: 1105px;
+	height: 4200;
 	box-shadow: 10px 10px 85px black;
 	background-color: #dfdfdf;
 	position: relative;
@@ -47,6 +47,9 @@ p.maintext
 	width: 200px; 
 	height: 100px;
 	background-color: #898989;
+	position: relative;
+	text-align: center;
+	right: -70px;
 }
 
 .lines

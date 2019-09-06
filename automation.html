@@ -1,27 +1,35 @@
-<HTML>
-	<TITLE>
+<html><head><title>
 		G1ANT Studio automation for GIMP editing
-	</TITLE>
-	<HEAD>
-		<H1>
+	</title>
+	
+		</head><body><h1>
 			How I made a software robot crop images in GIMP
-		</H1>
+		</h1>
+
+
+
 		<link rel="stylesheet" type="text/css" href="post.css">
-	</HEAD>
-	<BODY>
+	
+	
 		<div class="main">
-			<p> 
-			Today I decided I wanted to mess around with some ML. I wanted to try and make an image classifier for this game character from the game Don't Starve Together, maybe for future use with a RL agent. 
+	<br>
+			<p style="position: relative; right:-5px; top:20pxl; text-align: center"> 
+			Today I decided I wanted to mess around with some ML. I wanted to try and make an image classifier for this game character from the game Don't Starve Together, <br>maybe for future use with a RL agent. 
 			(That isn't the focus of this post though)
 			So I recorded myself playing the game for maybe 30 minutes.<br>
-			I converted all the frames of the video into single images. The total images is 8162 images (Some 15.4 GB!). Now there is no way I am going to sit around crop out of the character 
+			I converted all the frames of the video into single images. The total images is 8162 images (Some 15.4 GB!). Now there is no way I am going to sit around crop out the character 
 			I want to create my dataset for training. So I decided to have a G1ANT Robot do that for me! </p>
 			<br>
-			<div >
+			<div>
 				<img src="game00001.png" class="img">
 			</div>
-			<p style="position: relative; top:85px;">
-				Here's The code for the robot:<br>
+			<p style="position: relative; top:85px; right:-50px">
+				Here's The code for the robot:
+</p>
+<br>
+<br>
+<br>
+<br>
 				<code class="code">
 						addon ui version 4.101.0.0
 						<br>
@@ -35,7 +43,7 @@
 						♥iteration = ⟦integer⟧0<br>
 
 						call StartGimp<br>
-						while ⊂♥iteration < 8162⊃<br>
+						while ⊂♥iteration &lt; 8162⊃<br>
 						    ♥iteration = ♥iteration + 1<br>
 						    call OpenAndCropImages fileno ♥iteration<br>
 						end<br>
@@ -71,33 +79,48 @@
 						    keyboard ⋘CTRL+W⋙<br>
 						    keyboard ⋘LEFT⋙<br>
 						    keyboard ⋘ENTER⋙<br>
-						end<br>
+						end
 				</code>
-		</p>
-		<p>
-			Let's first look at the first couple of variables: ♥savedirectory= ‴E:\GeneralDev\DST\Data\Cropped\‴<br> ♥filename=game0000<br> ♥iteration = ⟦integer⟧0<br>
-			<p class="line">♥savedirectory= ‴E:\GeneralDev\DST\Data\Cropped\‴</p> is used to store the location of the cropped image. <br>
-			The file names of all the images have a similar pattern, all of them start with "game0000", only the last few digits change. <br> So just by altering the last few zeros (by adding one per iteration of the while loop),<br>
-			we can access all the files in the folder. So by concatenating the variable <p class="line">♥iteration</p>, we can get the names of the files we want to open.<br>
+	<br>
+		<p style="position: relative; top:35px; text-align: left; right: -25px;">
+Let's first look at the first couple of variables: <br>♥savedirectory=‴E:\GeneralDev\DST\Data\Cropped\‴<br> ♥filename=game0000 <br>♥iteration = ⟦integer⟧0<br><br><br>
+	♥savedirectory= ‴E:\GeneralDev\DST\Data\Cropped\‴ is used to store the location of the cropped image.
+	
+The file names of all the images have a similar pattern, <br>all of them start with "game0000", only the last few digits change. So just by altering the last few zeros (by adding one per iteration of the while loop),
+			we can access <br> all the files in the folder. So by concatenating the variable  ♥iteration, we can get the names of the files we want to open.
+</p>
+<br>
 
-			Next we have the two main procedures: <br>
-			StartGimp and<br>
-			OpenAndCropImages<br>
+ <br>
 
-			<p class="line">StartGimp</p> when called opens GIMP up, by pressing the win key on the keyboard and types in "GIMP" and hits enter and waits for the window to open up. <br>
-			<p class="line">OpenAndCropImages</p> is where most of the work happens. The line <p class="line">♥clipboard = ‴E:\GeneralDev\DST\Data\♥filename♥fileno.png‴</p> stores the path of the file to be opened onto the clipboard, which can be pasted later.<br>
-			<p class="line">keyboard ⋘ALT+F⋙</p> selects the file menu<br>
-			<img src="FileMenu.png" class="img"><br>
-			<p class="line">keyboard ⋘DOWN 4⋙</p> presses the down arrow four times to get to the "Open Location" menu<br>We then set a delay of 1 second with the <p class="line">delay 1</p> command to wait for the menu to pop up and then when paste <br>the contents of the clipboard.<br>
-			<img src="OpenLocationMenu.png"><br>
-			We set another delay of 1 second for the file to open up and then we select the whole image with ALT+S. We shrink the image by using the shortcut key "ALT+D" issued by the <p class="line">keyboard ⋘ALT+D⋙</p> <p class="line">keyboard ⋘ALT+BS⋙</p> crops the image to the selection. <br> <p class="line">keyboard ⋘SHIFT+CTRL+E⋙</p><br> opens the file export menu. We set a 10 second delay since it takes time for the export window to load up and then we hit enter. We then close the current view by pressing CTRL+W, pressing left arrow to select the discard option and hitting enter.<br>
-			<img src="Exit.png" class="img"><br>
+<p style="right:-50px; position:relative;">Next we have the two main procedures: 
+<br>
+  StartGimp and <br>
+  OpenAndCropImages
+</p>
+			<br><br>
 
-			This process is repeated for the remainder of the files.<br><br>
+			<p class="line" style="position:relative; right:-20px;">StartGimp when called opens GIMP up, by pressing the win key on the keyboard and types in "GIMP" and hits enter and waits for the window to open up. OpenAndCropImages is where most of the work happens. The line class="line"&gt;♥clipboard = ‴E:\GeneralDev\DST\Data\♥filename♥fileno.png‴  stores the path of the<br> file to be opened onto the clipboard, which can be pasted later.<br><br><br></p><br>
+			<br>
+			<p class="line" style="position:relative; right:-10px;">The command "keyboard ⋘ALT+F⋙" selects the file menu.<br>
+The Command "keyboard ⋘DOWN 4⋙" presses the down arrow four times to get to the "Open Location" menu</p><br>
+			<img src="FileMenu.png" class="img" style="position:relative; top:10px;">
+<br><br>
+			<br>
+<p style="position:relative; right:-10px;">
+We then set a delay of 1 second with the command "delay 1" to wait for the menu to pop up and then when paste the contents of the clipboard.</p><br><br>
+			<img src="OpenLocationMenu.png" class="img"><br><br><br>
+<br>
+<br>
+<br>
+<p style="position:relative; right:-10px;">We set another delay of 1 second for the file to open up and then we select the whole image with ALT+S. We shrink the image by using the shortcut key "ALT+D" <br>issued by the command "keyboard ⋘ALT+D⋙""</p> <p style="position:relative; right:-10px;"> The command keyboard ⋘alt+bs⋙ crops the image to selection.&gt;</p><br> <p style="position:relative; right:-10px">"Keyboard ⋘SHIFT+CTRL+E⋙" opens the file export menu. We set a 10 second delay since it takes time for the export window to load up and then we hit enter. We then close the current view by pressing CTRL+W, pressing left arrow to select the discard option and hitting enter./p&gt;</p><br><br>
+			<img src="Exit.png" class="img"><br><br>
+<br><br><br><p>This process is repeated for the remainder of the files.</p><div></div><br><br><p style="position:relative; right:-10px;">
 
 			Note: Even though the robot elimates the tedium of cropping images repeatedly and possible carpal tunnel syndrome, 8000+ files is still a lot to process. So it will take a fairly long time.
 
 		</p>
 		</div>
-	</BODY>
-</HTML>
+	
+
+</body></html>
