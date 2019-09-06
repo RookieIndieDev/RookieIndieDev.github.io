@@ -8,9 +8,11 @@ h1
 	color: #e0d0d0;
 	text-align: center;
 	font-family: Californian FB Bold, Calisto MT Bold;
+	text-shadow: 3px 2px #7e7e7e;
 }
 
 h1:hover
 {
 	color: #f2f0f0;
 }
+
