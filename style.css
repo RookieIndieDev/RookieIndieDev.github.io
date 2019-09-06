@@ -5,14 +5,22 @@ body
 
 h1
 {
-	color: #e0d0d0;
+	color: #5b3636;
 	text-align: center;
 	font-family: Californian FB Bold, Calisto MT Bold;
-	text-shadow: 3px 2px #ffffff;
+	text-shadow: 3px 2px 4px #000000;
+	position: 
 }
 
 h1:hover
 {
-	color: #f2f0f0;
+	color: #424242;
 }
 
+.main
+{
+	height: 1280px;
+	width: 720px;
+	box-shadow: 
+	text-align: center;
+}
