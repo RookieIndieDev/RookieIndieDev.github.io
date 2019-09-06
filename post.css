@@ -34,3 +34,10 @@ p
 	text-shadow: 5px 5px 10px black;
 	color: black;
 }
+
+.img
+{
+	box-shadow: 15px 15px 85px black;
+	width: 1280;
+	height: 720;
+}
