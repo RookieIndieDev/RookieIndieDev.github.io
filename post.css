@@ -1,22 +1,20 @@
 h1
 {
 	text-align: center;
-	position: absolute;
+	position: relative;
 	top: 2%;
-	right:38%;
 	text-shadow: 3px 2px 5px black;
-	font-size: 50px;
+	font-size: 60px;
 }
 
 .main
 {
 	width: 1080;
-	height: 480;
+	height: 2500;
 	box-shadow: 10px 10px 85px black;
 	background-color: #dfdfdf;
-	position: absolute;
-	top: 15%;
-	right:20%
+	position: relative;
+	right: -20%;
 }
 
 body
@@ -27,17 +25,19 @@ body
 p
 {
 	position: relative;
-  	text-align: center;
-	top: 40%;
-	right: -250px;
-	font-size: 50px;
-	text-shadow: 5px 5px 10px black;
+  text-align: left;
+	top: 2%;
+	right: -10px;
+	font-size:25x;
 	color: black;
 }
 
 .img
 {
-	box-shadow: 15px 15px 85px black;
-	width: 1280;
-	height: 720;
+	position: relative;
+	box-shadow: 15px 15px 45px black;
+	top: 60px;
+	width: 640;
+	height: 480;
+	right: -25%;
 }
