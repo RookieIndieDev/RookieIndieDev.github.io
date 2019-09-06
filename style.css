@@ -3,13 +3,12 @@ body
   background-image: url("Background.png");
 }
 
-h3
+h1
 {
 	color: #8c9aff;
 	text-align: center;
 	font-family: Californian FB Bold, Calisto MT Bold;
 	text-shadow: 3px 2px 4px #000000;
-	position: 
 }
 
 h3:hover
@@ -23,4 +22,6 @@ h3:hover
 	width: 720px;
 	box-shadow: 10px 10 px 5px black;
 	text-align: center;
+	border-width: 1280px;
+	border-width: 720px;
 }
