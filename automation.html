@@ -43,7 +43,7 @@
 					♥iteration = ⟦integer⟧0<br><br>
 
 					call StartGimp<br>
-					while ⊂♥iteration < 8167⊃<br>
+					while ⊂♥iteration &lt; 8167⊃<br>
 					    ♥iteration = ♥iteration + 1<br>
 					    call OpenAndCropImages iter ♥iteration<br>
 					end<br><br>
@@ -55,11 +55,11 @@
 
 					procedure OpenAndCropImages iter<br>
 					    ♥iter=⟦integer⟧♥iter<br>
-					    if ♥iter<10<br>
+					    if ♥iter&lt;10<br>
 					        ♥fileno=‴0000♥iter‴<br>
-					    else if ♥iter<100<br>
+					    else if ♥iter&lt;100<br>
 					        ♥fileno=‴000♥iter‴<br>
-					    else if ♥iter<1000<br>
+					    else if ♥iter&lt;1000<br>
 					        ♥fileno=‴00♥iter‴<br>
 					    else<br>
 					        ♥fileno=‴0♥iter‴<br>
@@ -93,7 +93,7 @@
 					end<br>
 				</code>
 	<br>
-		<p style="position: relative; top:35px; text-align: left; margin-left:5px;">
+		<p style="position: relative; top:35px; text-align: center; margin-left:5px;">
 Let's first look at the first couple of variables: <br>♥savedirectory=‴E:\GeneralDev\DST\Data\Cropped\‴<br> ♥filename=game0000 <br>♥iteration = ⟦integer⟧0<br><br><br>
 	♥savedirectory= ‴E:\GeneralDev\DST\Data\Cropped\‴ is used to store the location of the cropped image.
 	
@@ -104,27 +104,27 @@ The file names of all the images have a similar pattern, <br>all of them start w
 
  <br>
 
-<p style="right:-50px; position:relative;">Next we have the two main procedures: 
+<p style="right:-50px; position:relative;text-align:center;">Next we have the two main procedures: 
 <br>
   StartGimp and <br>
   OpenAndCropImages
 </p>
 			<br><br>
 
-			<p class="line" style="position:relative; margin-left: 5px;">StartGimp when called opens GIMP up, by pressing the win key on the keyboard and types in "GIMP" and hits enter and waits for the window to open up. OpenAndCropImages is where most of the work happens. The line class="line"&gt;♥clipboard = ‴E:\GeneralDev\DST\Data\♥filename♥fileno.png‴  stores the path of the<br> file to be opened onto the clipboard, which can be pasted later.<br><br><br></p><br>
+			<p class="line" style="position:relative; margin-left: 5px;text-align:center;">StartGimp when called opens GIMP up, by pressing the win key on the keyboard and types in "GIMP" and hits enter and waits for the window to open up. OpenAndCropImages is where most of the work happens. <br>The line class="line"&gt;♥clipboard = ‴E:\GeneralDev\DST\Data\♥filename♥fileno.png‴  stores the path of the<br> file to be opened onto the clipboard, which can be pasted later.<br><br><br></p><br>
 			<br>
-			<p class="line" style="position:relative; right:-10px;">The command "keyboard ⋘ALT+F⋙" selects the file menu.<br>
+			<p class="line" style="position:relative; right:-10px;text-align:center;">The command "keyboard ⋘ALT+F⋙" selects the file menu.<br>
 The Command "keyboard ⋘DOWN 4⋙" presses the down arrow four times to get to the "Open Location" menu</p><br>
 			<img src="FileMenu.png" class="img" style="position:relative; top:10px;">
 <br><br>
 			<br>
-<p style="position:relative; margin-left: 5px;">
+<p style="position:relative; margin-left: 5px;text-align:center;">
 We then set a delay of 1 second with the command "delay 1" to wait for the menu to pop up and then when paste the contents of the clipboard.</p><br><br>
 			<img src="OpenLocationMenu.png" class="img"><br><br><br>
 <br>
 <br>
 <br>
-<p style="position:relative; right:-10px;">We set another delay of 1 second for the file to open up and then we select the whole image with ALT+S. We shrink the image by using the shortcut key "ALT+D" <br>issued by the command "keyboard ⋘ALT+D⋙""</p> <p style="position:relative; right:-10px;"> The command keyboard ⋘alt+bs⋙ crops the image to selection.&gt;</p><br> <p style="position:relative; margin-left: 5px">"Keyboard ⋘SHIFT+CTRL+E⋙" opens the file export menu. We set a 10 second delay since it takes time for the export window to load up and then we hit enter. We then close the current view by pressing CTRL+W, pressing left arrow to select the discard option and hitting enter./p&gt;</p><br><br>
+<p style="position:relative; right:-10px;text-align:center;">We set another delay of 1 second for the file to open up and then we select the whole image with ALT+S. We shrink the image by using the shortcut key "ALT+D" <br>issued by the command "keyboard ⋘ALT+D⋙""</p> <p style="position:relative; right:-10px;text-align:center;"> The command keyboard ⋘alt+bs⋙ crops the image to selection.</p><br> <p style="position:relative; margin-left: 5px;text-align:center;">"Keyboard ⋘SHIFT+CTRL+E⋙" opens the file export menu. We set a 10 second delay since it takes time for the export window to load up and then we hit enter. We then close the current view by pressing CTRL+W, pressing left arrow to select the discard option and hitting enter.</p><br><br>
 			<img src="Exit.png" class="img"><br><br>
 <br><br><br><p style="position:relative; right:-10px;">This process is repeated for the remainder of the files.</p><div></div><br><br><p style="position:relative; margin-left: 5px;">
 
@@ -133,7 +133,7 @@ We then set a delay of 1 second with the command "delay 1" to wait for the menu 
 		</p>
 		<a href="https://gist.github.com/RookieIndieDev/5efcf8d5033b707c7ef7466bf9ed720c" style="position: relative; display: flex; justify-content: center;"> Here is a link to the gist file! </a>
 
-		<p style="font-weight: bold; margin-left: 10px;";>Update:</p>
+		<p style="font-weight: bold; margin-left: 10px;" ;="">Update:</p>
 		<p style="margin: 15px; text-align:center">Tweaked the code a little bit, the way I originally made it works only if ♥fileno is less than 10, for value greater than that it doesn't update the zero only concatenates to it, so a file "game0000100" doesn't exist (the name you'd get if you concatenated ♥iteration with ♥filename when ♥iteration is 100), simply concatentating the current iteration won't work. What I did instead is used a couple of if statements. <br> If the value is less than 10, it is obviously a single digit number, so adding "0000" would give me the file name. Similarly if it's a 3 digit number, adding two zeroes in front would give the right file name and for a four digit number simply adding a single zero in front does the job! </p>
 		</div>
 </body></html>
