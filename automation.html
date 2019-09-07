@@ -126,14 +126,14 @@ We then set a delay of 1 second with the command "delay 1" to wait for the menu 
 <br>
 <p style="position:relative; right:-10px;text-align:center;">We set another delay of 1 second for the file to open up and then we select the whole image with ALT+S. We shrink the image by using the shortcut key "ALT+D" <br>issued by the command "keyboard ⋘ALT+D⋙""</p> <p style="position:relative; right:-10px;text-align:center;"> The command keyboard ⋘alt+bs⋙ crops the image to selection.</p><br> <p style="position:relative; margin-left: 5px;text-align:center;">"Keyboard ⋘SHIFT+CTRL+E⋙" opens the file export menu. We set a 10 second delay since it takes time for the export window to load up and then we hit enter. We then close the current view by pressing CTRL+W, pressing left arrow to select the discard option and hitting enter.</p><br><br>
 			<img src="Exit.png" class="img"><br><br>
-<br><br><br><p style="position:relative; right:-10px;">This process is repeated for the remainder of the files.</p><div></div><br><br><p style="position:relative; margin-left: 5px;">
+<br><br><br><p style="position:relative; right:-10px;text-align:center">This process is repeated for the remainder of the files.</p><div></div><br><br><p style="position:relative; margin-left: 5px;text-align:center;">
 
 			Note: Even though the robot eliminates the tedium of cropping images repeatedly and possible carpal tunnel syndrome, 8000+ files is still a lot to process. So it will take a fairly long time.
 
 		</p>
 		<a href="https://gist.github.com/RookieIndieDev/5efcf8d5033b707c7ef7466bf9ed720c" style="position: relative; display: flex; justify-content: center;"> Here is a link to the gist file! </a>
 
-		<p style="font-weight: bold; margin-left: 10px;" ;="">Update:</p>
+		<p style="font-weight: bold; margin-left: 10px;text-align:center;">Update:</p>
 		<p style="margin: 15px; text-align:center">Tweaked the code a little bit, the way I originally made it works only if ♥fileno is less than 10, for value greater than that it doesn't update the zero only concatenates to it, so a file "game0000100" doesn't exist (the name you'd get if you concatenated ♥iteration with ♥filename when ♥iteration is 100), simply concatentating the current iteration won't work. What I did instead is used a couple of if statements. <br> If the value is less than 10, it is obviously a single digit number, so adding "0000" would give me the file name. Similarly if it's a 3 digit number, adding two zeroes in front would give the right file name and for a four digit number simply adding a single zero in front does the job! </p>
 		</div>
 </body></html>
