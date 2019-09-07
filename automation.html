@@ -34,55 +34,63 @@
 <br>
 <br>
 				<code class="code">
-						addon ui version 4.101.0.0
-						<br>
-						addon core version 4.101.0.0
-						<br>
-						addon language version 4.103.0.0
-						<br>
+					addon ui version 4.101.0.0<br>
+					addon core version 4.101.0.0<br>
+					addon language version 4.103.0.0<br><br>
 
-						♥savedirectory= ‴E:\GeneralDev\DST\Data\Cropped\‴<br>
-						♥filename=game0000<br>
-						♥iteration = ⟦integer⟧0<br>
+					♥savedirectory= ‴E:\GeneralDev\DST\Data\Cropped\‴<br>
+					♥filename=game<br>
+					♥iteration = ⟦integer⟧0<br><br>
 
-						call StartGimp<br>
-						while ⊂♥iteration &lt; 8162⊃<br>
-						    ♥iteration = ♥iteration + 1<br>
-						    call OpenAndCropImages fileno ♥iteration<br>
-						end<br>
+					call StartGimp<br>
+					while ⊂♥iteration < 8167⊃<br>
+					    ♥iteration = ♥iteration + 1<br>
+					    call OpenAndCropImages iter ♥iteration<br>
+					end<br><br>
 
-						procedure StartGimp<br>
-						keyboard ⋘WIN⋙gimp⋘ENTER⋙<br>
-						waitfor.ui ‴/ui[@name='GNU Image Manipulation Program']/descendant::ui[@id='MenuBar']/ui[@name='System']‴<br>
-						end<br>
+					procedure StartGimp<br>
+					keyboard ⋘WIN⋙gimp⋘ENTER⋙<br>
+					waitfor.ui ‴/ui[@name='GNU Image Manipulation Program']/descendant::ui[@id='MenuBar']/ui[@name='System']‴<br>
+					end<br>
 
-						procedure OpenAndCropImages fileno<br>
-						    ♥clipboard = ‴E:\GeneralDev\DST\Data\♥filename♥fileno.png‴<br>
-						    keyboard ⋘ALT+F⋙<br>
-						    keyboard ⋘DOWN 4⋙<br>
-						    keyboard ⋘ENTER⋙<br>
-						    delay 1<br>
-						    keyboard ⋘CTRL+V⋙<br>
-						    delay 1<br>
-						    keyboard ⋘ENTER⋙<br>
-						    delay 1<br>
-						    keyboard ⋘ALT+S⋙<br>
-						    keyboard ⋘ENTER⋙<br>
-						    keyboard ⋘ALT+D⋙<br>
-						    keyboard ⋘ENTER⋙<br>
-						    delay 3<br>
-						    keyboard ⋘ALT+BS⋙<br>
-						    keyboard ⋘SHIFT+CTRL+E⋙<br>
-						    delay 10<br>
-						    keyboard ♥savedirectory+♥filename+♥fileno<br>
-						    keyboard ⋘ENTER⋙<br>
-						    delay 5<br>
-						    keyboard ⋘ENTER⋙<br>
-						    delay 2<br>
-						    keyboard ⋘CTRL+W⋙<br>
-						    keyboard ⋘LEFT⋙<br>
-						    keyboard ⋘ENTER⋙<br>
-						end
+					procedure OpenAndCropImages iter<br>
+					    ♥iter=⟦integer⟧♥iter<br>
+					    if ♥iter<10<br>
+					        ♥fileno=‴0000♥iter‴<br>
+					    else if ♥iter<100<br>
+					        ♥fileno=‴000♥iter‴<br>
+					    else if ♥iter<1000<br>
+					        ♥fileno=‴00♥iter‴<br>
+					    else<br>
+					        ♥fileno=‴0♥iter‴<br>
+					    end<br><br>
+					    
+					    ♥clipboard = ‴E:\GeneralDev\DST\Data\♥filename♥fileno.png‴<br>
+					    keyboard ⋘ALT+F⋙<br>
+					    keyboard ⋘DOWN 4⋙<br>
+					    keyboard ⋘ENTER⋙<br>
+					    delay 1<br>
+					    keyboard ⋘CTRL+V⋙<br>
+					    delay 1<br>
+					    keyboard ⋘ENTER⋙<br>
+					    delay 1<br>
+					    keyboard ⋘ALT+S⋙<br>
+					    keyboard ⋘ENTER⋙<br>
+					    keyboard ⋘ALT+D⋙<br>
+					    keyboard ⋘ENTER⋙<br>
+					    delay 3<br>
+					    keyboard ⋘ALT+BS⋙<br>
+					    keyboard ⋘SHIFT+CTRL+E⋙<br>
+					    delay 10<br>
+					    keyboard ♥savedirectory+♥filename+♥fileno<br>
+					    keyboard ⋘ENTER⋙<br>
+					    delay 5<br>
+					    keyboard ⋘ENTER⋙<br>
+					    delay 2<br>
+					    keyboard ⋘CTRL+W⋙<br>
+					    keyboard ⋘LEFT⋙<br>
+					    keyboard ⋘ENTER⋙<br>
+					end<br>
 				</code>
 	<br>
 		<p style="position: relative; top:35px; text-align: left; margin-left:5px;">
@@ -124,5 +132,8 @@ We then set a delay of 1 second with the command "delay 1" to wait for the menu 
 
 		</p>
 		<a href="https://gist.github.com/RookieIndieDev/5efcf8d5033b707c7ef7466bf9ed720c" style="position: relative; display: flex; justify-content: center;"> Here is a link to the gist file! </a>
+
+		<p style="font-weight: bold; margin-left: 10px;";>Update:</p>
+		<p style="margin: 15px; text-align:center">Tweaked the code a little bit, the way I originally made it works only if ♥fileno is less than 10, for value greater than that it doesn't update the zero only concatenates to it, so a file "game0000100" doesn't exist (the name you'd get if you concatenated when ♥iteration is 100), simply concatentating the current iteration won't work. What I did instead is used a couple of if statements. <br> If the value is less than 10, it is obviously a single digit number, so adding "0000" would give me the file name. Similarly if it's a 3 digit number, adding two zeroes in front would give the right file name and for a four digit number simply adding a single zero in front does the job! </p>
 		</div>
 </body></html>
