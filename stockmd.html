@@ -58,43 +58,44 @@ end
 </code></pre>
 <p class="has-line-data" data-line-start="62" data-line-end="63">Let’s pick it apart line by line.</p>
 <p class="has-line-data" data-line-start="64" data-line-end="65"><code>♥timeoutselenium = 25000</code> sets the time out for selenium, for whatever reason chrome at times takes it time to load the website up, so for it to not timeout we increase the timeout value.</p>
-<pre><code class="has-line-data" data-line-start="67" data-line-end="69" class="language-list.create">list.create ‴‴ separator ❚ result ♥openValues
+<pre><code class="has-line-data" data-line-start="67" data-line-end="70">list.create ‴‴ separator ❚ result ♥datesList
+list.create ‴‴ separator ❚ result ♥openValues
 </code></pre>
-<p class="has-line-data" data-line-start="69" data-line-end="70">creates two empty lists to store date values and opening stock values.</p>
-<pre><code class="has-line-data" data-line-start="72" data-line-end="76">selenium.open chrome url finance.yahoo.com
+<p class="has-line-data" data-line-start="70" data-line-end="71">creates two empty lists to store date values and opening stock values.</p>
+<pre><code class="has-line-data" data-line-start="73" data-line-end="77">selenium.open chrome url finance.yahoo.com
 delay 2
 keyboard ⋘TAB 11⋙
 </code></pre>
-<p class="has-line-data" data-line-start="76" data-line-end="77">We then load up <a href="http://finance.yahoo.com">finance.yahoo.com</a>, wait for 2 seconds for the site to finish loading up and then we hit the tab key 11 times to select the search text field (this can be done with <code>selenium.click</code> also but sometimes xpath can be finicky).</p>
-<pre><code class="has-line-data" data-line-start="80" data-line-end="84">dialog.ask ‴Enter the company's name here:‴ result ♥companyName
+<p class="has-line-data" data-line-start="77" data-line-end="78">We then load up <a href="http://finance.yahoo.com">finance.yahoo.com</a>, wait for 2 seconds for the site to finish loading up and then we hit the tab key 11 times to select the search text field (this can be done with <code>selenium.click</code> also but sometimes xpath can be finicky).</p>
+<pre><code class="has-line-data" data-line-start="81" data-line-end="85">dialog.ask ‴Enter the company's name here:‴ result ♥companyName
 keyboard ♥companyName
 keyboard ⋘ENTER⋙
 </code></pre>
-<p class="has-line-data" data-line-start="84" data-line-end="85">asks the user to enter the name of the company and presses enter, the result is stored in <code>♥companyName</code> which we will use later.</p>
-<p class="has-line-data" data-line-start="86" data-line-end="87"><img src="http://rookieindiedev.github.io/EnterCompanyName.png" alt=""></p>
-<pre><code class="has-line-data" data-line-start="90" data-line-end="92">selenium.click search /html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[5]/section/div/ul/li[5]/a/span by xpath
+<p class="has-line-data" data-line-start="85" data-line-end="86">asks the user to enter the name of the company and presses enter, the result is stored in <code>♥companyName</code> which we will use later.</p>
+<p class="has-line-data" data-line-start="87" data-line-end="88"><img src="http://rookieindiedev.github.io/EnterCompanyName.png" alt=""></p>
+<pre><code class="has-line-data" data-line-start="91" data-line-end="93">selenium.click search /html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[5]/section/div/ul/li[5]/a/span by xpath
 </code></pre>
-<p class="has-line-data" data-line-start="92" data-line-end="93">We then click the “Historical Data” section by searching for it using it’s xpath.</p>
-<p class="has-line-data" data-line-start="94" data-line-end="95"><img src="http://rookieindiedev.github.io/HistoricalData.png" alt=""></p>
-<p class="has-line-data" data-line-start="96" data-line-end="99">Now let’s take a look at the three procedures:<br>
+<p class="has-line-data" data-line-start="93" data-line-end="94">We then click the “Historical Data” section by searching for it using it’s xpath.</p>
+<p class="has-line-data" data-line-start="95" data-line-end="96"><img src="http://rookieindiedev.github.io/HistoricalData.png" alt=""></p>
+<p class="has-line-data" data-line-start="97" data-line-end="100">Now let’s take a look at the three procedures:<br>
 <code>getLastTenDates, getLastTenOpenValues, enterIntoExcel</code><br>
 Let’s look at the line <code>selenium.gettext search/html/body/div[1]/div/div/div[1]/div/div[3]/div[1]/div/div[2]/section/div[2]/table/tbody/tr[♥i]/td[1]/span by xpath result ♥dateRowValue</code> in getLastTenDates.</p>
-<p class="has-line-data" data-line-start="100" data-line-end="101">All the data on the website is stored in a HTML Table. So that makes it easy for us to access every row and column in the table to get the data we want.</p>
-<p class="has-line-data" data-line-start="102" data-line-end="103"><img src="rookieindiedev.github.io/Table.png" alt=""></p>
-<p class="has-line-data" data-line-start="104" data-line-end="105">If we take a look at the xpath for the rows of the table, all of them are of the form <code>&quot;/html/body/div[1]/div/div/div[1]/div/div[3]/div[1]/div/div[2]/section/div[2]/table/tbody/tr[1]/td[1]/span&quot;, &quot;/html/body/div[1]/div/div/div[1]/div/div[3]/div[1]/div/div[2]/section/div[2]/table/tbody/tr[2]/td[1]/span&quot;</code> etc.,</p>
-<p class="has-line-data" data-line-start="106" data-line-end="107">So by changing the value of <code>/tbody/tr[x]/td[y]</code> in the xpath string (x and y being the row number and y being the column number), we can access different elements of the table.</p>
-<p class="has-line-data" data-line-start="108" data-line-end="109">We do this by <code>selenium.gettext search /html/body/div[1]/div/div/div[1]/div/div[3]/div[1]/div/div[2]/section/div[2]/table/tbody/tr[♥i]/td[1]/span by xpath result ♥dateRowValue</code> where <code>♥i</code> is the row number which we iterate through with the for loop from 1 to 11.</p>
-<p class="has-line-data" data-line-start="110" data-line-end="111">We then add the values obtained to a list <code>♥datesList</code> with the statement <code>list.add ♥datesList toadd ♥dateRowValue timeout 25000</code>.</p>
-<p class="has-line-data" data-line-start="112" data-line-end="114">Similarly with <code>getLastTenOpenValues</code> we modify the xpath with a for loop but we set the <code>/tbody/tr[x]/td[y]</code> to<br>
+<p class="has-line-data" data-line-start="101" data-line-end="102">All the data on the website is stored in a HTML Table. So that makes it easy for us to access every row and column in the table to get the data we want.</p>
+<p class="has-line-data" data-line-start="103" data-line-end="104"><img src="rookieindiedev.github.io/Table.png" alt=""></p>
+<p class="has-line-data" data-line-start="105" data-line-end="106">If we take a look at the xpath for the rows of the table, all of them are of the form <code>&quot;/html/body/div[1]/div/div/div[1]/div/div[3]/div[1]/div/div[2]/section/div[2]/table/tbody/tr[1]/td[1]/span&quot;, &quot;/html/body/div[1]/div/div/div[1]/div/div[3]/div[1]/div/div[2]/section/div[2]/table/tbody/tr[2]/td[1]/span&quot;</code> etc.,</p>
+<p class="has-line-data" data-line-start="107" data-line-end="108">So by changing the value of <code>/tbody/tr[x]/td[y]</code> in the xpath string (x and y being the row number and y being the column number), we can access different elements of the table.</p>
+<p class="has-line-data" data-line-start="109" data-line-end="110">We do this by <code>selenium.gettext search /html/body/div[1]/div/div/div[1]/div/div[3]/div[1]/div/div[2]/section/div[2]/table/tbody/tr[♥i]/td[1]/span by xpath result ♥dateRowValue</code> where <code>♥i</code> is the row number which we iterate through with the for loop from 1 to 11.</p>
+<p class="has-line-data" data-line-start="111" data-line-end="112">We then add the values obtained to a list <code>♥datesList</code> with the statement <code>list.add ♥datesList toadd ♥dateRowValue timeout 25000</code>.</p>
+<p class="has-line-data" data-line-start="113" data-line-end="115">Similarly with <code>getLastTenOpenValues</code> we modify the xpath with a for loop but we set the <code>/tbody/tr[x]/td[y]</code> to<br>
 <code>/tbody/tr[♥i]/td[2]</code> since we want the second column of our table.</p>
-<p class="has-line-data" data-line-start="115" data-line-end="116">We then store those values in another list <code>♥openValues</code> with the statement <code>list.add ♥openValues toadd ♥OpenRowValue timeout 25000</code>.</p>
-<p class="has-line-data" data-line-start="117" data-line-end="118">Finally let’s look at the <code>enterIntoExcel</code> Procedure:</p>
-<pre><code class="has-line-data" data-line-start="119" data-line-end="122">    excel.setvalue row 1 colname A value ‴Date‴
+<p class="has-line-data" data-line-start="116" data-line-end="117">We then store those values in another list <code>♥openValues</code> with the statement <code>list.add ♥openValues toadd ♥OpenRowValue timeout 25000</code>.</p>
+<p class="has-line-data" data-line-start="118" data-line-end="119">Finally let’s look at the <code>enterIntoExcel</code> Procedure:</p>
+<pre><code class="has-line-data" data-line-start="120" data-line-end="123">    excel.setvalue row 1 colname A value ‴Date‴
     excel.setvalue colname B row 1 value ‴Open Value‴
 </code></pre>
-<p class="has-line-data" data-line-start="122" data-line-end="123">With those lines we set A1 and B1 to &quot;Date&quot;and “Open Value” respectively.</p>
-<p class="has-line-data" data-line-start="124" data-line-end="125">Next, we iterate through the lists and enter them in the cell ranges A2 to A11 and B2 to B11 for the dates and the open values respectively:</p>
-<pre><code class="has-line-data" data-line-start="126" data-line-end="134">    for ♥i from 2 to 11
+<p class="has-line-data" data-line-start="123" data-line-end="124">With those lines we set A1 and B1 to &quot;Date&quot;and “Open Value” respectively.</p>
+<p class="has-line-data" data-line-start="125" data-line-end="126">Next, we iterate through the lists and enter them in the cell ranges A2 to A11 and B2 to B11 for the dates and the open values respectively:</p>
+<pre><code class="has-line-data" data-line-start="127" data-line-end="135">    for ♥i from 2 to 11
         excel.setvalue row ♥i colname A value ♥datesList⟦♥i⟧
     end
     
@@ -102,9 +103,9 @@ Let’s look at the line <code>selenium.gettext search/html/body/div[1]/div/div/
         excel.setvalue row ♥i colname B value ♥openValues⟦♥i⟧
     end
 </code></pre>
-<p class="has-line-data" data-line-start="135" data-line-end="137">We then save and exit out of the excel document.<br>
+<p class="has-line-data" data-line-start="136" data-line-end="138">We then save and exit out of the excel document.<br>
 <img src="http://rookieindiedev.github.io/Excel.png" alt=""></p>
-<p class="has-line-data" data-line-start="138" data-line-end="139">And that’s it! Pretty simple automation to get stock values for companies you’re interested in. This can of course be extended quite easily, if you want to get more than just 10 values, just change the loop variables in the loops for getting the values from the site and the loops for entering them into the excel sheet, as long as it stays within a certain range it should be fine. You can also extend it to get values of multiple companies by calling the functions in a loop for each company you want, with a <code>dialog.ask</code> in front for each iteration of the loop.</p>
-<p class="has-line-data" data-line-start="140" data-line-end="141"><a href="https://gist.github.com/RookieIndieDev/d18b1eadc1dd3e328f21663e1a4e5386">Here’s a link to the Gist file!</a></p>
+<p class="has-line-data" data-line-start="139" data-line-end="140">And that’s it! Pretty simple automation to get stock values for companies you’re interested in. This can of course be extended quite easily, if you want to get more than just 10 values, just change the loop variables in the loops for getting the values from the site and the loops for entering them into the excel sheet, as long as it stays within a certain range it should be fine. You can also extend it to get values of multiple companies by calling the functions in a loop for each company you want, with a <code>dialog.ask</code> in front for each iteration of the loop.</p>
+<p class="has-line-data" data-line-start="141" data-line-end="142"><a href="https://gist.github.com/RookieIndieDev/d18b1eadc1dd3e328f21663e1a4e5386">Here’s a link to the Gist file!</a></p>
 
 </body></html>
